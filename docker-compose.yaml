@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+    express-boilerplate:
+      container_name: express-boilerplate
+      restart: always
+      image: sieteunoseis/express-boilerplate:latest
+      ports:
+        - "3000:3000"
+      env_file:
+        - .env
+      volumes:
+        - express-boilerplate-data:/app/data
+volumes:
+  express-boilerplate-data:
+    name: express-boilerplate-data

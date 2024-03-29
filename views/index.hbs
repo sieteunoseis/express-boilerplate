@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="container mt-2 mb-2">
+    <div class="row justify-content-center">
+      <div class="col-auto section-title">
+        <h1>{{title}}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-1 mb-5">
+    <div class="row justify-content-center">
+      <h4>Built using:</h4>
+      <p>Node.js, Express, Handlebars, Bootstrap, FontAwesome, CodeMirror,
+        Handsontable, & Select2. All libraries added via CDN for easy of use.
+        Check out some of the examples below.</p>
+      <div class="container col-sm p-2">
+        <div class="card">
+          <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" data-bs-tabs="tabs">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="true"
+                  data-bs-toggle="tab"
+                  href="#toast"
+                >Bootstrap Toast Alerts</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  href="#fontAwesome"
+                >FontAwesome</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  href="#handlebars"
+                >Handlebars</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  href="#handsontable"
+                >Handsontable</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  href="#select2"
+                >Select2</a>
+              </li>
+            </ul>
+          </div>
+          <form class="card-body tab-content">
+            <div class="tab-pane active" id="toast">
+              <p class="card-text">Built in notifications via Bootstrap Toast.
+                Toasts are lightweight notifications designed to mimic the push
+                notifications that have been popularized by mobile and desktop
+                operating systems. They’re built with flexbox, so they’re easy
+                to align and position.</p>
+              <div class="content">
+                <!-- button to copy the editor -->
+                <div class="copy-code-wrap">
+                  <div class="copy-code"></div>
+                </div>
+                <textarea id="toastAlert" style="display: none;"></textarea>
+                <p class="mt-2">Note: CodeMirror added as a Extensible Code
+                  Editor for displaying code snippets</p>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="liveToastBtn"
+              >Show live toast</button>
+            </div>
+            <div class="tab-pane" id="fontAwesome">
+              <p class="card-text">Font Awesome is the Internet's icon library
+                and toolkit, used by millions of designers, developers, and
+                content creators.</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i
+                    class="fa-brands fa-instagram"
+                  ></i>
+                  Instagram</li>
+                <li class="list-group-item"><i class="fa-solid fa-code"></i>
+                  Code Block</li>
+                <li class="list-group-item"><i
+                    class="fa-solid fa-mug-saucer"
+                  ></i>
+                  Coffee!</li>
+                <li class="list-group-item"><i
+                    class="fa-solid fa-user-secret"
+                  ></i>
+                  Secret</li>
+              </ul>
+            </div>
+            <div class="tab-pane" id="handlebars">
+              <p class="card-text">
+                Handlebars is a pure rendering engine. It works well if you want
+                to allow people to write templates for rendering HTML-pages,
+                e-mails or markdown files. It has no built-in support for
+                event-handling, accessing backend-services or incremental DOM
+                updates.</p>
+              <p>Using routes in Express different pages can be loaded using
+                layouts. Check out the views folders for examples.</p>
+              <a href="/blank" class="text-decoration-none"><i
+                  class="fa-regular fa-file"
+                ></i>
+                Blank Layout</a>
+            </div>
+            <div class="tab-pane" id="handsontable">
+              <p class="card-text">
+                Handsontable is a JavaScript data grid component for web
+                applications.</p>
+              <p>Using routes in Express different pages can be loaded using
+                layouts. Here we're using a layout to display data in
+                Hansontable. Check out the views folder for example.</p>
+              <a href="/handsontable" class="text-decoration-none"><i
+                  class="fa-solid fa-table"
+                ></i>
+                Handsontable Example Page</a>
+            </div>
+            <div class="tab-pane" id="select2">
+              <p class="card-text">
+                Select2 gives you a customizable select box with support for
+                searching, tagging, remote data sets, infinite scrolling, and
+                many other highly used options.</p>
+                <p>Check out <a href="https://select2.org/" target="_blank">https://select2.org/</a> for more information.</p>
+                <p>Here is a demo using our built in API to return all the US States and populate this select element.</p>
+              <select class="form-select form-select-lg" id="selectState"></select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
