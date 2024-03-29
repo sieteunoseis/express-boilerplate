@@ -15,5 +15,5 @@ COPY . .
 # Expose port 3000
 EXPOSE 3000
 
-# Start PM2 Process
+# Start the app
 CMD ["npm", "start"]

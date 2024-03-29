@@ -11,7 +11,8 @@ A NodeJS web application building using the following technologies:
 - JQuery 3.7.1
 - PopperJS Core 2.11.8
 - FontAwesome 6.5.1
-- Toast
+
+Most libraries are included using CDN's for easy of use.
 
 ## Installation
 
@@ -40,6 +41,13 @@ docker run -d -p 3000:3000 --name express-boilerplate --restart=always --env-fil
 ```javascript
 NODE_ENV=production
 ```
+The NODE_ENV environment variable specifies the environment in which an application is running (usually, development or production). One of the simplest things you can do to improve performance is to set NODE_ENV to “production.”
+
+Setting NODE_ENV to “production” makes Express:
+
+- Cache view templates.
+- Cache CSS files generated from CSS extensions.
+- Generate less verbose error messages.
 
 ## Exposed API
 
