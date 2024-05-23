@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC');
+
 body {
   width: 100%;
   display: flex;
@@ -16,7 +18,6 @@ body {
 *:focus {
   box-shadow: none !important;
 }
-
 
 /* Handsontable Customization */
 
@@ -110,62 +111,151 @@ h1 em {
   table-layout: fixed;
 }
 
-
 /* CodeMirror Customization */
 
 .content {
-	position: relative;
+  position: relative;
   margin-bottom: 15px;
-	border-radius: 4px; */
+  border-radius: 4px;
 }
 
 .CodeMirror {
-	height: fit-content !important;
-	border-radius: 5px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+  height: fit-content !important;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .CodeMirror-sizer {
   padding: 10px !important;
 }
 
 .copy-code-wrap {
-	height: 34px;
-	width: 34px;
-	position: absolute;
-	bottom: -10px;
-	right: -10px;
-	z-index: 10;
-	cursor: pointer;
+  height: 34px;
+  width: 34px;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  z-index: 10;
+  cursor: pointer;
 }
 .copy-code {
-	height: 32px;
-	width: 32px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	background: #339af0;
-	border-radius: 50%;
-	z-index: 10;
-	transition: 0.2s;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #339af0;
+  border-radius: 50%;
+  z-index: 10;
+  transition: 0.2s;
 }
 .copy-code::after {
-	font-family: "Font Awesome 5 Free";
-	font-weight: 600;
-	font-size: 16px;
-	content: "\f328";
-	color: #fff;
-	position: absolute;
-	top: 3px;
-	left: 10px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 16px;
+  content: "\f328";
+  color: #fff;
+  position: absolute;
+  top: 3px;
+  left: 10px;
 }
 .copy-code-wrap:active .copy-code {
-	transform: translate(0, 0) scale(0.9);
+  transform: translate(0, 0) scale(0.9);
 }
 .animate {
-	transform: translate(0, 0) scale(1.12);
+  transform: translate(0, 0) scale(1.12);
 }
 
 .tooltip {
-	font-size: 15px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hidetext {
+  -webkit-text-security: disc; /* Default */
+}
+
+.margin-left {
+  margin-left: 10px !important;
+}
+
+@keyframes lights {
+  0% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+  30% { 
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  40% { 
+    color: hsl(230, 100%, 95%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+      -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+      0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  70% {
+    color: hsl(230, 80%, 90%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.5),
+      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+      0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+      -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+  }
+  
+  100% {
+    color: hsl(230, 40%, 80%);
+    text-shadow:
+      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+      -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+  }
+  
+}
+
+
+.hit-the-floor {
+  margin: auto;
+  font-size: 3.5rem;
+  font-weight: 300;
+  animation: lights 5s 750ms linear infinite;
+}
+
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter h2 {
+  font-family: Patrick Hand SC;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
 }

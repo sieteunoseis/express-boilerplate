@@ -1,0 +1,28 @@
+{{#if results}}
+  <div class="row justify-content-center">
+    <div class="col-auto section-title">
+      <h1>Accounts</h1>
+    </div>
+    <table id="credTable" class="table mt-5">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Hostname</th>
+          <th scope="col">Credentials</th>
+          <th scope="col">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results}}
+          <tr>
+            <td id="ID">{{this.id}}</td>
+            <td>{{this.hostname}}</td>
+            <td>{{this.username}}</td>
+            <td id="PASSWORD" class="hidetext">{{this.password}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+{{/if}}
+{{!-- {{log this}} --}}

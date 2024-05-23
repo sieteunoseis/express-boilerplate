@@ -1,12 +1,7 @@
 var text = `// Toast Example
 const toastTrigger = document.getElementById("liveToastBtn");
-const toastLiveExample = document.getElementById("liveToast");
 
 if (toastTrigger) {
-  const toastBootstrap =
-    bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-  toastTrigger.addEventListener("click", () => {
-    toastBootstrap.show();
     showAlert("Success", "This is a success message");
   });
 }`;
@@ -15,15 +10,10 @@ if (toastTrigger) {
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-    // Toast Example
+    // Toast Example: See showAlert function on main.js
     const toastTrigger = document.getElementById("liveToastBtn");
-    const toastLiveExample = document.getElementById("liveToast");
-
     if (toastTrigger) {
-      const toastBootstrap =
-        bootstrap.Toast.getOrCreateInstance(toastLiveExample);
       toastTrigger.addEventListener("click", () => {
-        toastBootstrap.show();
         showAlert("Success", "This is a success message");
       });
     }
@@ -68,7 +58,7 @@ document.addEventListener(
     editor.setOption("mode", "javascript");
     editor.setValue(text);
 
-    $(".copy-code-wrap").onclick = function (e) {
+    $$(".copy-code-wrap").onclick = function (e) {
       if (e.which == 1) {
         // write the text to the clipboard
         navigator.clipboard.writeText(editor.getValue());
@@ -87,13 +77,6 @@ document.addEventListener(
   },
   false
 );
-
-function showAlert(messageTitle, messageBody) {
-  const toastTitle = document.getElementById("toastTitle");
-  const toastMessage = document.getElementById("toastMessage");
-  toastTitle.innerHTML = messageTitle;
-  toastMessage.innerHTML = messageBody;
-}
 
 function updateSelect2() {
   // Get files for drop down
