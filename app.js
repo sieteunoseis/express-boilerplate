@@ -45,6 +45,7 @@ app.use("/bootstrap", express.static(path.join(__dirname, "node_modules/bootstra
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+// Comment out the line below to disable routes if you don't need them
 app.use("/blank", blankRouter);
 app.use("/handsontable", htRouter);
 app.use("/credentials", credRouter);

@@ -29,13 +29,14 @@ document.addEventListener(
 
 const displayForm = () => {
   $("#credTable").SetEditable({
-    editableCols: "1,2,3",
+    editableCols: "1,2,3,4", // Index to editable columns. If null all td editables. Ex.: "1,2,3,4,5"
     password: true,
     onEdit: async function(row, data) {
       json = {
         hostname: data[1],
         username: data[2],
-        password: data[3]
+        password: data[3],
+        version: data[4]
       }
       const responseData = await fetch(`/credentials/data/${data[0]}`, {
         method: "PUT",

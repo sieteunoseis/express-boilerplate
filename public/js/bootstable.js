@@ -56,7 +56,7 @@ function IterateEditFields($cols, action) {
   $cols.each(function () {
     n++;
     if ($(this).attr("name") == "buttons") return; //Exclude buttons column
-    if (!IsEditable(n - 1)) return; //It's not editable
+    if (!IsEditable(n - 1)) return; //It's not editable. Minus 1 because n is 1 based and the first column is the id column
     action($(this));
   });
 
@@ -120,7 +120,7 @@ function butRowAcep(but) {
   var arr = []
   arr.push($row.find(`td[id='${params.primaryKey}']`).text());
   IterateEditFields($cols, function ($td) {
-    var cont = $td.find("input").val();
+    var cont = $td.find("input").val() ? $td.find("input").val() : $td.find("select").val();
     if($td[0].id == "PASSWORD") {
       $td.addClass("hidetext");
     }
@@ -146,11 +146,34 @@ function butRowEdit(but) {
   if (editMode($row)) return;
   var focused = false;
   IterateEditFields($cols, function ($td) {
-
-    var cont = $td.html();
+    var cont = $td.html(); // Contents of the cell
     //Save previous content in a hide <div>
     var div = '<div style="display: none;">' + cont + "</div>";
-    var input = '<input class="form-control input-sm" value="' + cont + '">';
+    var input;
+    if ($td[0].id == "VERSION") {
+      if (cont == "12.5") {
+        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
+                  <option value="12.5" selected>12.5</option>
+                  <option value="14.0">14.0</option>
+                  <option value="15.0">15.0</option>
+                </select>`;
+      }else if (cont == "14.0") {
+        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
+                  <option value="12.5">12.5</option>
+                  <option value="14.0" selected>14.0</option>
+                  <option value="15.0">15.0</option>
+                </select>`;
+      }else if (cont =="15.0") {
+        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
+                  <option value="12.5">12.5</option>
+                  <option value="14.0">14.0</option>
+                  <option value="15.0" selected>15.0</option>
+                </select>`;
+      }
+      
+    }else{
+      input = '<input class="form-control input-sm" value="' + cont + '">';
+    }
     $td.html(div + input); // Set new content
     // Set focus to first column
     if (!focused) {

@@ -1,15 +1,17 @@
 {{#if results}}
-  <div class="row justify-content-center">
+  <small>Note: Adding new account, will overwrite the existing account with the new values. To update select pencil icon below.</small>
+  <div class="row justify-content-center mt-5">
     <div class="col-auto section-title">
-      <h1>Accounts</h1>
+      <h1>Saved Accounts</h1>
     </div>
     <table id="credTable" class="table mt-5">
       <thead>
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Hostname</th>
-          <th scope="col">Credentials</th>
+          <th scope="col">Username</th>
           <th scope="col">Password</th>
+          <th scope="col">Version</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +21,7 @@
             <td>{{this.hostname}}</td>
             <td>{{this.username}}</td>
             <td id="PASSWORD" class="hidetext">{{this.password}}</td>
+            <td id="VERSION">{{this.version}}</td>
           </tr>
         {{/each}}
       </tbody>

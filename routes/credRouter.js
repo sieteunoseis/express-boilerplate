@@ -20,10 +20,11 @@ const createDatabase = () => {
   db.serialize(() => {
     db.run(
       `CREATE TABLE IF NOT EXISTS credentials (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id BOOLEAN PRIMARY KEY DEFAULT True CONSTRAINT one_row_only CHECK (id) NOT NULL,
       hostname TEXT,
       username TEXT,
-      password TEXT
+      password TEXT,
+      version TEXT
     )`,
       (err) => {
         if (err) {
@@ -49,9 +50,9 @@ router.get("/", function (req, res, next) {
     }
 
     if (rows.length > 0) {
-      res.render("credentials", { title: "Save Account", year: year, script: "credentials.js", results: rows });
+      res.render("credentials", { title: "Add New Account", year: year, script: "credentials.js", results: rows });
     } else {
-      res.render("credentials", { title: "Save Account", year: year, script: "credentials.js" });
+      res.render("credentials", { title: "Add New Account", year: year, script: "credentials.js" });
     }
   });
 });
@@ -67,8 +68,8 @@ router.get("/data", (req, res) => {
 });
 
 router.post("/data", (req, res) => {
-  const { hostname, username, password } = req.body;
-  db.run("INSERT INTO credentials (hostname, username, password) VALUES (?, ?, ?)", [hostname, username, password], (err) => {
+  const { hostname, username, password, version } = req.body;
+  db.run("INSERT OR REPLACE INTO credentials (id, hostname, username, password, version) VALUES (?, ?, ?, ?, ?)", [true, hostname, username, password, version], (err) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
@@ -86,9 +87,9 @@ router.post("/data", (req, res) => {
 });
 
 router.put("/data/:id", (req, res) => {
-  const { hostname, username, password } = req.body;
+  const { hostname, username, password, version } = req.body;
   const id = req.params.id;
-  db.run("UPDATE credentials SET hostname=?, username=?, password=? WHERE id=?", [hostname, username, password, id], (err) => {
+  db.run("UPDATE credentials SET hostname=?, username=?, password=?, version=? WHERE id=?", [hostname, username, password, version, id], (err) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
