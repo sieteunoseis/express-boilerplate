@@ -8,6 +8,8 @@ Bootstable
 //Global variables
 var params = null; // Parameters
 var colsEdit = null; // Editable columns
+var versions = ["12.5", "14.0", "15.0"];
+
 var newColHtml =
   '<div class="btn-group pull-left">' +
   '<button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="butRowEdit(this);">' +
@@ -104,12 +106,12 @@ function butShowValue(but) {
   var $cols = $row.find("td");
   if (!editMode($row)) return;
   IterateEditFields($cols, function ($td) {
-    if($td[0].id == "PASSWORD" & !$td[0].classList.contains("hidetext")) {
-      $(but).children().removeClass("fa-eye-slash").addClass("fa-eye")
+    if (($td[0].id == "PASSWORD") & !$td[0].classList.contains("hidetext")) {
+      $(but).children().removeClass("fa-eye-slash").addClass("fa-eye");
       $td.addClass("hidetext");
-    }else if($td[0].id == "PASSWORD"){
+    } else if ($td[0].id == "PASSWORD") {
       $td.removeClass("hidetext");
-      $(but).children().removeClass("fa-eye").addClass("fa-eye-slash")
+      $(but).children().removeClass("fa-eye").addClass("fa-eye-slash");
     }
   });
 }
@@ -117,18 +119,18 @@ function butRowAcep(but) {
   var $row = $(but).parents("tr");
   var $cols = $row.find("td");
   if (!editMode($row)) return;
-  var arr = []
+  var arr = [];
   arr.push($row.find(`td[id='${params.primaryKey}']`).text());
   IterateEditFields($cols, function ($td) {
     var cont = $td.find("input").val() ? $td.find("input").val() : $td.find("select").val();
-    if($td[0].id == "PASSWORD") {
+    if ($td[0].id == "PASSWORD") {
       $td.addClass("hidetext");
     }
     $td.html(cont);
     arr.push(cont);
   });
   SetButtonsNormal(but);
-  params.onEdit($row,arr);
+  params.onEdit($row, arr);
 }
 function butRowCancel(but) {
   var $row = $(but).parents("tr");
@@ -149,31 +151,20 @@ function butRowEdit(but) {
     var cont = $td.html(); // Contents of the cell
     //Save previous content in a hide <div>
     var div = '<div style="display: none;">' + cont + "</div>";
-    var input;
+    var input = '<select class="form-select" aria-label="Default select example" id="versionSave" name="version">';
     if ($td[0].id == "VERSION") {
-      if (cont == "12.5") {
-        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
-                  <option value="12.5" selected>12.5</option>
-                  <option value="14.0">14.0</option>
-                  <option value="15.0">15.0</option>
-                </select>`;
-      }else if (cont == "14.0") {
-        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
-                  <option value="12.5">12.5</option>
-                  <option value="14.0" selected>14.0</option>
-                  <option value="15.0">15.0</option>
-                </select>`;
-      }else if (cont =="15.0") {
-        input = `<select class="form-select" aria-label="Default select example" id="versionSave" name="version">
-                  <option value="12.5">12.5</option>
-                  <option value="14.0">14.0</option>
-                  <option value="15.0" selected>15.0</option>
-                </select>`;
-      }
-      
-    }else{
+      versions.forEach((version) => {
+        if (cont == version) {
+          input = input + `<option value="${version}" selected>${version}</option>`;
+        } else {
+          input = input + `<option value="${version}">${version}</option>`;
+        }
+      });
+      input = input + "</select>";
+    } else {
       input = '<input class="form-control input-sm" value="' + cont + '">';
     }
+
     $td.html(div + input); // Set new content
     // Set focus to first column
     if (!focused) {
@@ -186,8 +177,5 @@ function butRowEdit(but) {
 
 function butRowDelete(but) {
   var $row = $(but).parents("tr");
-  params.onDelete($row,$row.find(`td[id='${params.primaryKey}']`).text());
+  params.onDelete($row, $row.find(`td[id='${params.primaryKey}']`).text());
 }
-
-
-

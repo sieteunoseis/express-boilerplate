@@ -29,3 +29,4 @@ Thumbs.db
 
 # NPM modules
 node_modules
+db/database.db
